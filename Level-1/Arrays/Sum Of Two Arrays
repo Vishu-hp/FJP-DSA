@@ -1,0 +1,48 @@
+#include<iostream>
+#include<vector>
+using namespace std;
+
+int main(){
+    int n1;
+    cin>>n1;
+    vector<int>arr1(n1);
+    for(int i=0;i<n1;i++){
+        cin>>arr1[i];
+    }
+
+    int n2;
+    cin>>n2;
+    vector<int>arr2(n2);
+    for(int i=0;i<n2;i++){
+        cin>>arr2[i];
+    }
+
+    int resLen = max(n1,n2);
+    vector<int>res(resLen);
+    int p1,p2,p3,carry;
+    p1=n1-1;
+    p2=n2-1;
+    p3 = resLen-1;
+    carry=0;
+
+    while(p1>=0 || p2>=0){
+        int v1 = (p1>=0)?arr1[p1]:0 ;
+        int v2 = (p2>=0)?arr2[p2]:0 ;
+
+        int sum = v1+v2+carry;
+        int digit = sum%10;
+        carry = sum/10;
+        res[p3]=digit;
+        p1--;
+        p2--;
+        p3--;
+    }
+    if(carry==1){
+        res.insert(res.begin(),1);
+    }
+
+    for(int i=0;i<res.size();i++){
+        cout<<res[i]<<endl;
+    }
+    return 0;
+}
