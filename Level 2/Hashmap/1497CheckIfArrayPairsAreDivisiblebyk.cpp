@@ -20,6 +20,11 @@ public:
                     return false;
                 }
             }
+            else if(2*rem == k){
+                if(remFreq[rem]%2!=0){
+                    return false;
+                }
+            }
             else if(remFreq[rem]!= remFreq[k-rem]){
                 return false;
             }
