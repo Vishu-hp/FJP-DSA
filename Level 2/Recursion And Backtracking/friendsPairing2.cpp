@@ -1,3 +1,4 @@
+// FRIENDS PAIRING (PRINTING ALL CONFIGURATIONS) - BACKTRACKING
 #include<bits/stdc++.h>
 using namespace std;
 
@@ -35,3 +36,35 @@ int main(){
     solve(1,n,f,"");
     return 0;
 }
+
+
+// FRIENDS PAIRING GFG - RECURSION + DP
+class Solution
+{
+public:
+    
+    long long mod=1000000007;
+    
+    int solve(int n,int dp[]){
+        if(n<=1){
+            return 1;
+        }
+        
+        if(dp[n]!=0){
+            return dp[n];
+        }
+        
+        long long a1 = solve(n-1,dp)%mod;
+        long long a2 = (n>=2)?((n-1)*(solve(n-2,dp)%mod))%mod:0;
+        
+        dp[n] = (a1+a2)%mod;
+        return (a1+a2)%mod;
+    }
+    
+    int countFriendsPairings(int n) 
+    { 
+        // code here
+        int dp[10001]={0};
+        return solve(n,dp);
+    }
+};
