@@ -1,10 +1,13 @@
-void evenOdd(int a, int b){
-        // Code here
-        int mask=1;
-        if(a&mask > 0){
-            cout<<b<<endl<<a<<endl;
+class Solution{   
+public:
+    string oddEven(int N){
+        // code here 
+        
+        if( N & 1){
+            return "odd";
         }
         else{
-            cout<<a<<endl<<b<<endl;
+            return "even";
         }
-}
+    }
+};
