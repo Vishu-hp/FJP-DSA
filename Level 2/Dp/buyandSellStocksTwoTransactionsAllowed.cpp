@@ -2,6 +2,93 @@
 
 class Solution {
 public:
+    // RECURSION + MEMOIZATION
+    // int solve(vector<int>&prices,int idx,int buy,int k,vector<vector<vector<int>>>&memo){
+    //     if(idx==prices.size() || k==0){
+    //         return 0;
+    //     }
+
+    //     if(memo[idx][buy][k] != -1){
+    //         return memo[idx][buy][k];
+    //     }
+
+    //     int pro=0;
+    //     if(buy){
+    //         int a1 = solve(prices, idx+1, 0,k,memo) + (-prices[idx]);
+    //         int a2 = solve(prices, idx+1, 1,k,memo);
+    //         pro = max(a1, a2);
+    //     }
+    //     else{
+    //         int a1 = solve(prices, idx+1, 1,k-1,memo) + (prices[idx]);
+    //         int a2 = solve(prices, idx+1, 0,k,memo);
+    //         pro = max(a1, a2);
+    //     }
+    //     return memo[idx][buy][k] = pro;
+    // }
+
+    // int maxProfit(vector<int>& prices) {
+    //     int n = prices.size();
+    //     vector<vector<vector<int>>>memo(n,vector<vector<int>>(2, vector<int>(3,-1)));
+    //     return solve(prices, 0, 1, 2, memo);
+    // }
+
+    // TABULATION
+    // int maxProfit(vector<int>& prices) {
+    //     int n = prices.size();
+    //     vector<vector<vector<int>>>tab(n+1,vector<vector<int>>(2, vector<int>(3,0)));
+
+    //     for(int i=n-1;i>=0;i--){
+    //         for(int j=0;j<2;j++){
+    //             for(int k=1;k<=2;k++){
+    //                 int pro=0;
+    //                 if(j){
+    //                     int a1 = tab[i+1][0][k] + (-prices[i]);
+    //                     int a2 = tab[i+1][1][k];
+    //                     pro = max(a1, a2);
+    //                 }
+    //                 else{
+    //                     int a1 = tab[i+1][1][k-1] + (prices[i]);
+    //                     int a2 = tab[i+1][0][k];
+    //                     pro = max(a1, a2);
+    //                 }
+    //                 tab[i][j][k] = pro;
+    //             }
+    //         }
+    //     }
+
+    //     return tab[0][1][2];
+    // }
+
+    // SPACE OPTIMIZATION
+    //  int maxProfit(vector<int>& prices) {
+    //     int n = prices.size();
+    //     vector<vector<int>>next(2, vector<int>(3,0));
+    //     vector<vector<int>>curr(2, vector<int>(3,0));
+
+    //     for(int i=n-1;i>=0;i--){
+    //         for(int j=0;j<2;j++){
+    //             for(int k=1;k<=2;k++){
+    //                 int pro=0;
+    //                 if(j){
+    //                     int a1 = next[0][k] + (-prices[i]);
+    //                     int a2 = next[1][k];
+    //                     pro = max(a1, a2);
+    //                 }
+    //                 else{
+    //                     int a1 = next[1][k-1] + (prices[i]);
+    //                     int a2 = next[0][k];
+    //                     pro = max(a1, a2);
+    //                 }
+    //                 curr[j][k] = pro;
+    //             }
+    //         }
+    //         next = curr;
+    //     }
+
+    //     return next[1][2];
+    // }
+
+    // MISC SOLUTION
     int maxProfit(vector<int>& prices) {
         int n = prices.size();
 
