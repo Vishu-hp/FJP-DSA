@@ -1,3 +1,6 @@
+// GENERAL RECURSIVE WAY DOES NOT WORK 
+// SO THIS DP + BITMASK IS A GOOD APPROACH
+
 class Solution {
 public:
     int dp[(1<<16)][16];
